@@ -98,10 +98,10 @@ export default async function DashboardOverview() {
           <CardHeader><CardTitle className="text-base">Quick Actions</CardTitle></CardHeader>
           <CardContent className="grid grid-cols-2 gap-3">
             {[
-              { href: "/dashboard/pos", icon: "🛒", label: "Open POS" },
-              { href: "/dashboard/inventory", icon: "📦", label: "Inventory" },
-              { href: "/dashboard/accounts/new", icon: "🧾", label: "New Invoice" },
-              { href: "/dashboard/reports", icon: "📊", label: "Reports" },
+              { href: "/pos", icon: "🛒", label: "Open POS" },
+              { href: "/inventory", icon: "📦", label: "Inventory" },
+              { href: "/accounts/new", icon: "🧾", label: "New Invoice" },
+              { href: "/reports", icon: "📊", label: "Reports" },
             ].map(tile => (
               <Link key={tile.href} href={tile.href}
                 className="flex flex-col items-center gap-2 rounded-xl border-2 border-dashed border-muted-foreground/20 p-4 hover:border-primary/40 hover:bg-primary/5 transition-all group cursor-pointer">
@@ -117,9 +117,9 @@ export default async function DashboardOverview() {
           <CardContent className="space-y-3">
             {[
               { done: true, label: "Account created", sub: "Business workspace is ready", href: null },
-              { done: productCount > 0, label: "Add your first product", sub: "Go to Inventory →", href: "/dashboard/inventory" },
-              { done: saleCount > 0, label: "Make your first sale", sub: "Open POS →", href: "/dashboard/pos" },
-              { done: allTimeRevenue > 0, label: "Track your revenue", sub: "View Reports →", href: "/dashboard/reports" },
+              { done: productCount > 0, label: "Add your first product", sub: "Go to Inventory →", href: "/inventory" },
+              { done: saleCount > 0, label: "Make your first sale", sub: "Open POS →", href: "/pos" },
+              { done: allTimeRevenue > 0, label: "Track your revenue", sub: "View Reports →", href: "/reports" },
             ].map((step, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold flex-shrink-0 ${step.done ? "bg-emerald-500/10 text-emerald-600" : "bg-muted text-muted-foreground"}`}>

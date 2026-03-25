@@ -107,7 +107,7 @@ export default function POSClient({ products }: { products: Product[] }) {
         <div className="flex-1 overflow-y-auto">
           {filteredProducts.length === 0 ? (
             <div className="flex h-48 items-center justify-center text-muted-foreground">
-              <p>No products found. <a href="/dashboard/inventory" className="text-primary hover:underline">Add products →</a></p>
+              <p>No products found. <a href="/inventory" className="text-primary hover:underline">Add products →</a></p>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">

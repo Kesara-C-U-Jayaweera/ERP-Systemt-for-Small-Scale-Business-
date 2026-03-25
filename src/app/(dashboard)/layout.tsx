@@ -8,16 +8,16 @@ const prisma = new PrismaClient();
 
 const navLinks = [
   { href: "/dashboard", label: "Overview", icon: "🏠" },
-  { href: "/dashboard/pos", label: "Point of Sale", icon: "🛒" },
-  { href: "/dashboard/inventory", label: "Inventory", icon: "📦" },
-  { href: "/dashboard/accounts", label: "Accounts & Invoicing", icon: "🧾" },
-  { href: "/dashboard/customers", label: "Customers", icon: "👥" },
-  { href: "/dashboard/employees", label: "Employees", icon: "🧑‍💼" },
-  { href: "/dashboard/reports", label: "Reports", icon: "📊" },
+  { href: "/pos", label: "Point of Sale", icon: "🛒" },
+  { href: "/inventory", label: "Inventory", icon: "📦" },
+  { href: "/accounts", label: "Accounts & Invoicing", icon: "🧾" },
+  { href: "/customers", label: "Customers", icon: "👥" },
+  { href: "/employees", label: "Employees", icon: "🧑‍💼" },
+  { href: "/reports", label: "Reports", icon: "📊" },
 ]
 
 const bottomLinks = [
-  { href: "/dashboard/settings", label: "Settings", icon: "⚙️" },
+  { href: "/settings", label: "Settings", icon: "⚙️" },
 ]
 
 export default async function DashboardLayout({

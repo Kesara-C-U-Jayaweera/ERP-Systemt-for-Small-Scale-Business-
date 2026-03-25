@@ -77,6 +77,6 @@ export async function createProduct(formData: FormData) {
     }
   })
 
-  revalidatePath("/dashboard/inventory")
+  revalidatePath("/inventory")
   return { success: true }
 }

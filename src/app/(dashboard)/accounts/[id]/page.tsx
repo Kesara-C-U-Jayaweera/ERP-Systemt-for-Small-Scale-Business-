@@ -38,7 +38,7 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
     <div className="flex flex-col gap-6 max-w-4xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Link href="/dashboard/accounts">
+          <Link href="/accounts">
             <Button variant="outline" size="sm">← Back</Button>
           </Link>
           <div>

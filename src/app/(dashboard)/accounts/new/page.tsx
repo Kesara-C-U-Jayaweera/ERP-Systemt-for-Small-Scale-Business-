@@ -53,7 +53,7 @@ export default function NewInvoicePage() {
       })
       const data = await res.json()
       if (data.success) {
-        router.push("/dashboard/accounts")
+        router.push("/accounts")
         router.refresh()
       } else {
         alert(data.error || "Failed to create invoice")

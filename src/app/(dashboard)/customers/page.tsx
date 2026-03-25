@@ -76,7 +76,7 @@ export default async function CustomersPage() {
                     <TableCell className="text-muted-foreground text-sm">{customer.email || "—"}</TableCell>
                     <TableCell className="text-muted-foreground text-sm">{customer.phone || "—"}</TableCell>
                     <TableCell className="text-center">
-                      <Link href="/dashboard/accounts">
+                      <Link href="/accounts">
                         <Button variant="ghost" size="sm" className="h-7 text-xs font-medium">
                           {customer._count.invoices} invoices
                         </Button>

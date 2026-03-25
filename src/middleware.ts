@@ -63,18 +63,19 @@ export async function middleware(request: NextRequest) {
 
   const url = request.nextUrl.clone()
 
-  // Protect /dashboard and /onboard routes
-  const isDashboardRoute = url.pathname.startsWith('/dashboard')
-  const isOnboardRoute = url.pathname.startsWith('/onboard')
+  // Protect dashboard and all app module routes
+  const protectedPrefixes = [
+    '/dashboard', '/onboard', '/pos', '/inventory',
+    '/accounts', '/customers', '/employees', '/reports', '/settings'
+  ]
+  const isDashboardRoute = protectedPrefixes.some(p => url.pathname.startsWith(p))
   const isAuthRoute = url.pathname.startsWith('/login') || url.pathname.startsWith('/register')
 
-  if (!user && (isDashboardRoute || isOnboardRoute)) {
-    // Redirect unauthenticated users to login
+  if (!user && isDashboardRoute) {
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // If user is authenticated and trying to access login/register, redirect to dashboard
   if (user && isAuthRoute) {
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)

@@ -49,7 +49,7 @@ export default async function AccountsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Accounts & Invoicing</h1>
           <p className="text-muted-foreground mt-1">Create and manage your sales invoices.</p>
         </div>
-        <Link href="/dashboard/accounts/new">
+        <Link href="/accounts/new">
           <Button className="shadow-sm">
             <span className="mr-2">+</span> New Invoice
           </Button>
@@ -98,7 +98,7 @@ export default async function AccountsPage() {
               </TableRow>
             ) : (
               invoices.map(inv => (
-                <Link key={inv.id} href={`/dashboard/accounts/${inv.id}`} className="contents">
+                <Link key={inv.id} href={`/accounts/${inv.id}`} className="contents">
                   <TableRow className="hover:bg-muted/20 transition-colors cursor-pointer">
                     <TableCell className="font-mono font-medium">{inv.number}</TableCell>
                     <TableCell className="font-medium">{inv.customer.name}</TableCell>
