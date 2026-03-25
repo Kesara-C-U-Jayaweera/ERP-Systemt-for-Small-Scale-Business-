@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/dashboard/pos", label: "Point of Sale", icon: "🛒" },
   { href: "/dashboard/inventory", label: "Inventory", icon: "📦" },
   { href: "/dashboard/accounts", label: "Accounts & Invoicing", icon: "🧾" },
+  { href: "/dashboard/reports", label: "Reports", icon: "📊" },
 ]
 
 const bottomLinks = [
