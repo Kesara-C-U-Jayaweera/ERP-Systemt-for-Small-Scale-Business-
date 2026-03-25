@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useBarcodeScanner } from "@/hooks/use-barcode-scanner"
 
 type Product = {
   id: string
@@ -49,6 +50,30 @@ export default function POSClient({ products }: { products: Product[] }) {
     setSearch("")
     searchRef.current?.focus()
   }
+
+  useBarcodeScanner({
+    onScan: (barcode) => {
+      // Don't scan if payment modal is open
+      if (paymentModal) return
+
+      const product = products.find(p => p.barcode === barcode || p.sku === barcode)
+      if (product) {
+        // play simple beep
+        const audio = new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU")
+        audio.play().catch(() => {})
+        
+        // Use functional state update to guarantee latest cart state
+        setCart(prev => {
+          const existing = prev.find(c => c.product.id === product.id)
+          if (existing) {
+            return prev.map(c => c.product.id === product.id ? { ...c, qty: c.qty + 1 } : c)
+          } else {
+            return [...prev, { product, qty: 1, price: Number(product.price) }]
+          }
+        })
+      }
+    }
+  })
 
   function removeFromCart(productId: string) {
     setCart(cart.filter(c => c.product.id !== productId))

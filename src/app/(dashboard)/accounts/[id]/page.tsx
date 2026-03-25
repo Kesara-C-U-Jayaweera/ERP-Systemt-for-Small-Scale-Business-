@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import { InvoiceActions } from "./invoice-actions"
 
 const prisma = new PrismaClient()
 
@@ -47,10 +48,12 @@ export default async function InvoiceDetailPage({ params }: { params: { id: stri
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Badge variant={statusStyles[invoice.status] ?? "secondary"}>{invoice.status}</Badge>
-          <a href={`/api/invoices/${invoice.id}`} target="_blank">
-            <Button variant="outline" size="sm">🖨️ Print / PDF</Button>
-          </a>
+          <Badge variant={statusStyles[invoice.status] ?? "secondary"} className="print:hidden">{invoice.status}</Badge>
+          <InvoiceActions 
+            phone={invoice.customer.phone} 
+            invoiceNumber={invoice.number} 
+            total={invoice.total.toString()} 
+          />
         </div>
       </div>
 

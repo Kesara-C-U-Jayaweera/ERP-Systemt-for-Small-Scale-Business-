@@ -37,6 +37,8 @@ Thumbs.db
 # Vercel
 .vercel
 
+# AI tools
+.agent
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts

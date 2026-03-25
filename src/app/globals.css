@@ -57,3 +57,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  /* Hide sidebars and actions */
+  .print\:hidden, aside, nav {
+    display: none !important;
+  }
+  
+  /* Reset margins for clean thermal/A4 printing */
+  @page { margin: 0; }
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 2cm !important;
+  }
+}
