@@ -1,5 +1,6 @@
 import { getProducts } from "./actions"
 import { AddProductDialog } from "./add-product-dialog"
+import { StockAdjustDialog } from "./stock-adjust-dialog"
 import {
   Table,
   TableBody,
@@ -33,12 +34,13 @@ export default async function InventoryPage() {
               <TableHead className="text-right">Price</TableHead>
               <TableHead className="text-right">In Stock</TableHead>
               <TableHead className="text-center">Status</TableHead>
+              <TableHead className="text-center">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {products.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="h-48 text-center text-muted-foreground">
+                <TableCell colSpan={7} className="h-48 text-center text-muted-foreground">
                   <div className="flex flex-col items-center gap-2">
                     <p>No products in inventory yet.</p>
                     <p className="text-sm">Click 'Add Product' to get started!</p>
@@ -77,6 +79,13 @@ export default async function InventoryPage() {
                       <Badge variant={product.active ? "default" : "secondary"}>
                         {product.active ? 'Active' : 'Inactive'}
                       </Badge>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <StockAdjustDialog
+                        productId={product.id}
+                        productName={product.name}
+                        currentStock={totalStock}
+                      />
                     </TableCell>
                   </TableRow>
                 )
