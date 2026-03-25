@@ -92,7 +92,7 @@ export default async function AccountsPage() {
                 <TableCell colSpan={6} className="h-48 text-center text-muted-foreground">
                   <div className="flex flex-col items-center gap-2">
                     <p>No invoices yet.</p>
-                    <p className="text-sm">Click 'New Invoice' to create your first one.</p>
+                    <p className="text-sm">Click &apos;New Invoice&apos; to create your first one.</p>
                   </div>
                 </TableCell>
               </TableRow>

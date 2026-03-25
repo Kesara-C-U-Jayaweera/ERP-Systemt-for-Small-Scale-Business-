@@ -43,7 +43,7 @@ export default async function InventoryPage() {
                 <TableCell colSpan={7} className="h-48 text-center text-muted-foreground">
                   <div className="flex flex-col items-center gap-2">
                     <p>No products in inventory yet.</p>
-                    <p className="text-sm">Click 'Add Product' to get started!</p>
+                    <p className="text-sm">Click &apos;Add Product&apos; to get started!</p>
                   </div>
                 </TableCell>
               </TableRow>
