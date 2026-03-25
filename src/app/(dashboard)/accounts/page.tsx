@@ -24,7 +24,7 @@ export default async function AccountsPage() {
 
   const invoices = await prisma.invoice.findMany({
     where: { tenantId: dbUser.tenantId },
-    include: { lines: true, payments: true },
+    include: { lines: true, payments: true, customer: true },
     orderBy: { createdAt: 'desc' },
     take: 50
   })
@@ -98,24 +98,26 @@ export default async function AccountsPage() {
               </TableRow>
             ) : (
               invoices.map(inv => (
-                <TableRow key={inv.id} className="hover:bg-muted/20 transition-colors cursor-pointer">
-                  <TableCell className="font-mono font-medium">{inv.number}</TableCell>
-                  <TableCell className="text-muted-foreground text-sm">—</TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
-                    {new Date(inv.issueDate).toLocaleDateString('en-LK')}
-                  </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
-                    {new Date(inv.dueDate).toLocaleDateString('en-LK')}
-                  </TableCell>
-                  <TableCell className="text-right font-semibold">
-                    LKR {Number(inv.total).toLocaleString()}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <Badge variant={statusStyles[inv.status] as any ?? "secondary"}>
-                      {inv.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
+                <Link key={inv.id} href={`/dashboard/accounts/${inv.id}`} className="contents">
+                  <TableRow className="hover:bg-muted/20 transition-colors cursor-pointer">
+                    <TableCell className="font-mono font-medium">{inv.number}</TableCell>
+                    <TableCell className="font-medium">{inv.customer.name}</TableCell>
+                    <TableCell className="text-sm text-muted-foreground">
+                      {new Date(inv.issueDate).toLocaleDateString('en-LK')}
+                    </TableCell>
+                    <TableCell className="text-sm text-muted-foreground">
+                      {new Date(inv.dueDate).toLocaleDateString('en-LK')}
+                    </TableCell>
+                    <TableCell className="text-right font-semibold">
+                      LKR {Number(inv.total).toLocaleString()}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Badge variant={statusStyles[inv.status] as any ?? "secondary"}>
+                        {inv.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                </Link>
               ))
             )}
           </TableBody>
